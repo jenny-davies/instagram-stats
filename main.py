@@ -1,7 +1,7 @@
-from connect_to_account import connect
-from scrape_posts import scrape_post_info
-from format_table import format_output_table
-from save_output import save_output
+from utils.connect_to_account import connect
+from utils.scrape_posts import scrape_post_info
+from utils.format_table import format_output_table
+from utils.save_output import save_output
 
 connect(account_name = 'dreamartslndn')
 
