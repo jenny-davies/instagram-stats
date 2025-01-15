@@ -1,9 +1,7 @@
 import datetime
 from utils.scrape_posts import scrape_post_info
 
-def format_output_table(post_year):
-    df = scrape_post_info(max_posts = 60)
-    
+def format_output_table(df, post_year):
     print('Formatting output table')
     # name columns
     df.columns = ['timestamp', 'n_likes', 'n_comments', 'video', 'video_views']
@@ -13,7 +11,7 @@ def format_output_table(post_year):
 
     # derive additional columns
     df['weekday'] = df['timestamp'].dt.day_name()
-    df['hour_posted'] = df['hour_posted'].dt.hour
+    df['hour_posted'] = df['timestamp'].dt.hour
     df['hour_posted'] = df['hour_posted'].apply(lambda x: str(x - 12)+'pm' if x > 12 else str(x)+'am')
 
     return df
